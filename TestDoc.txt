@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-heyyeyhyfyefyehfehfhehfehfhefhhefhefhehfe
-=======
-This is a test
->>>>>>> c2b6e899fcdbd105b22334de228f9b755d25efe0

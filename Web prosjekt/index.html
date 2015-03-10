@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/jquery.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+      <div class="jumbotron text-center">
+        <div class="container">
+          <img src="img/logo.png" alt="Westerdals_logo">
+          <h1>Westerdals</h1>
+          <p>Booking av klasserom.</p>
+          <nav>
+            <ul class="nav nav-pills nav-justified">
+              <li role="presentation" class="active"><a href="#">Hjem</a></li>
+              <li role="presentation"><a href="kart.html">Kart</a></li>
+              <li role="presentation"><a href="#">Info</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="container">
+      <div class="row rad rom_ledig text-center" id="rom_ledig1">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">klasserom nr: 1</div>
+              <div class="col-md-3" id="rom1_nr"></div>
+              <div class="col-md-3" id="rom1_status">Ledig</div>
+              <div class="col-md-3" id="rom1_tid">- - : - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bestill text-center" id="bestill_rom1">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
+            <input type="text" class="form-control" id="rom1_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
+              <input type="text" class="form-control" id="rom1_nytid" placeholder="skrives 12:00 - 12:45">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="rom1_btn1" type="button">Book!</button>
+              <button class="btn btn-default" id="rom1_btn2" type="button">Avbryt</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row rad rom_ledig text-center" id="rom_ledig2">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">klasserom nr: 2</div>
+              <div class="col-md-3" id="rom2_nr"></div>
+              <div class="col-md-3" id="rom2_status">Ledig</div>
+              <div class="col-md-3" id="rom2_tid">- - : - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bestill text-center" id="bestill_rom2">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
+            <input type="text" class="form-control" id="rom2_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
+              <input type="text" class="form-control" id="rom2_nytid" placeholder="skrives 12:00 - 12:45">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="rom2_btn1" type="button">Book!</button>
+              <button class="btn btn-default" id="rom2_btn2" type="button">Avbryt</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row rad rom_ledig text-center" id="rom_ledig3">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">klasserom nr: 3</div>
+              <div class="col-md-3" id="rom3_nr"></div>
+              <div class="col-md-3" id="rom3_status">Ledig</div>
+              <div class="col-md-3" id="rom3_tid">- - : - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bestill text-center" id="bestill_rom3">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
+            <input type="text" class="form-control" id="rom3_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
+              <input type="text" class="form-control" id="rom3_nytid" placeholder="skrives 12:00 - 12:45">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="rom3_btn1" type="button">Book!</button>
+              <button class="btn btn-default" id="rom3_btn2" type="button">Avbryt</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row rad rom_ledig text-center" id="rom_ledig4">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">klasserom nr: 4</div>
+              <div class="col-md-3" id="rom4_nr"></div>
+              <div class="col-md-3" id="rom4_status">Ledig</div>
+              <div class="col-md-3" id="rom4_tid">- - : - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bestill text-center" id="bestill_rom4">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
+            <input type="text" class="form-control" id="rom4_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
+              <input type="text" class="form-control" id="rom4_nytid" placeholder="skrives 12:00 - 12:45">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="rom4_btn1" type="button">Book!</button>
+              <button class="btn btn-default" id="rom4_btn2" type="button">Avbryt</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div class="row rad rom_ledig text-center" id="rom_ledig5">
+        <div class="col-md-12">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-3">klasserom nr: 5</div>
+              <div class="col-md-3" id="rom5_nr"></div>
+              <div class="col-md-3" id="rom5_status">Ledig</div>
+              <div class="col-md-3" id="rom5_tid">- - : - -</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row bestill text-center" id="bestill_rom5">
+        <div class="col-md-6">
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
+            <input type="text" class="form-control" id="rom5_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2">
+          </div>
+        </div>
+        <div class="col-md-6"> 
+          <div class="input-group">
+            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
+              <input type="text" class="form-control" id="rom5_nytid" placeholder="skrives 12:00 - 12:45">
+              <span class="input-group-btn">
+              <button class="btn btn-default" id="rom5_btn1" type="button">Book!</button>
+              <button class="btn btn-default" id="rom5_btn2" type="button">Avbryt</button>
+            </span>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+    </div> <!--Container-->
+  </body>
+</html>

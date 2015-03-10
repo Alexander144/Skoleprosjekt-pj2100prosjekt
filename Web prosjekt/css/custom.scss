@@ -1,0 +1,86 @@
+$opptatt: #e67e22;
+$ledig: #2ecc71;
+$bg: #ecf0f1;
+$popupgb:#1abc9c;
+$skillelinje:#2c3e50;
+$jumbobg:#2c3e50;
+
+.rom_ledig{
+	background-color: $ledig;
+	border-radius: 10px 10px 0px 0px;
+	border-bottom: 3px solid $skillelinje;
+	min-height: 50px;
+}
+.rom_opptatt{
+	background-color: $opptatt;
+	border-radius: 10px 10px 0px 0px;
+	border-bottom: 3px solid $skillelinje;
+}
+.bestill{
+	height: 80px;
+	margin: 5px 0px;
+	border-radius: 0px 0px 10px 10px;
+	background-color: $popupgb;
+	border-top: 3px solid $skillelinje;
+	display: none;
+}
+body{
+	background-color: $bg;
+}
+.jumbotron{
+	background-color: $jumbobg;
+	margin-bottom: 0px;
+	h1{
+		color:$bg;
+	}
+	p{
+		color:$bg;
+	}
+}
+.rom{  
+    height: 200px;
+    width: 298px;
+    margin-right: 120px;
+    margin-bottom: 100px;
+    background-color:   $ledig;
+    border: solid;
+    float: left;
+}
+.rammerom{
+   width: 1138px;
+   height: 502px;
+   border: solid 2px black;
+   margin: 120px;
+   margin-left: 380px;   
+   margin-top: 400px;
+}
+#rom3{
+    margin-right:0px;
+}
+#rom6{
+    @extend #rom3;
+}
+.rom:hover{
+    opacity: 0.2;
+}
+.box{
+    margin-left: 20px;
+    margin-top: 10px;
+    width: 50px;
+    height: 50px;
+    border: solid 2px black;
+    float: left;
+}
+#infofelt{
+    float: left;
+    margin-left: 400px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+#ledigBox{
+    background-color: $ledig;
+    float: left;
+}
+#opptattBox{
+    background-color: $opptatt;
+}
