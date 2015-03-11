@@ -4,6 +4,7 @@ $bg: #ecf0f1;
 $popupgb:#1abc9c;
 $skillelinje:#2c3e50;
 $jumbobg:#2c3e50;
+$hover:#27ae60;
 
 .rom_ledig{
 	background-color: $ledig;
@@ -37,56 +38,41 @@ body{
 		color:$bg;
 	}
 }
-.rom{  
-    height: 200px;
-    width: 298px;
-    margin-right: 120px;
-    margin-bottom: 100px;
-    background-color:   $ledig;
-    border: solid;
-    float: left;
-    border: 10px;
+.thumbnail{
+  background-color: $ledig;
+  height: 200px;
+  margin-top: 50px;
+  ul{
+    list-style: none;
+    margin-top: 10px;
+  }
 }
-.rammerom{
-   width: 1138px;
-   height: 504px;
-   border: solid 2px black;
-   margin-top: 100px;
-}
-#rom3{
-    margin-right:0px;
-}
-#rom6{
-    @extend #rom3;
-}
-.rom:hover{
-    opacity: 0.2;
-}
-.box{
-    margin-top: 50px;
-    width: 50px;
-    height: 50px;
-    border: solid 2px black;
-    float: left;
-}
-#infofelt{
-   width: 1138px;
-   height: 150px;
-   border: solid 2px black;
-   margin-top: 100px;
-   h1{
-   margin-left: 130px;
-   margin-top: 50px;
-   float: left;
-   }
-}
-#ledigBox{
-    background-color: $ledig;
-}
-#opptattBox{
-    background-color: $opptatt;
+.thumbnail:hover{
+  background-color: $hover;
 }
 
+/*LEGG TIL DENN CLASSEN NÅR ROMMET ER OPPTATT*/
+.thumbnail_opptatt{
+  background-color: $opptatt;
+  height: 100px;
+}
+
+
+.kart{
+  border: 2px solid $skillelinje;
+  border-radius: 10px;
+  margin-bottom: 30px;
+}
+
+.ledigfarge{
+  color: $ledig;
+}
+
+.opptattfarge{
+  color: $opptatt;
+}
+
+<<<<<<< HEAD
 .cal_calendar th
 {
         border:1px solid black;
@@ -110,3 +96,13 @@ body{
 {
         color:#5a779e;
 }
+=======
+
+
+
+
+
+
+
+
+>>>>>>> d6d981cfab94c38f4f11fa01c3571a0de9a948c8
