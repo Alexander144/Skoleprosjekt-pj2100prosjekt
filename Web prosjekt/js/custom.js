@@ -1,5 +1,3 @@
-var dato;
-
 $(document).ready(function(){
   $("#rom_ledig1").click(function(){
     $("#bestill_rom1").show("1000");
@@ -20,18 +18,20 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    $('#rom1_nytid').keyup(function() {
-     $('#rom1_tid').val($(this).val());
-     $('#rom1_tid').html($(this).val());
-     dato=$('#rom1_tid').val($(this).val());
-    });
+  $('#rom1_nytid').keyup(function() {
+   $('#rom1_tid').val($(this).val());
+   $('#rom1_tid').html($(this).val());
+    var dato;
+   dato = $(this).val();
+   calendar(dato);
+ });
 });
 
 $(document).ready(function() {
-    $('#rom1_navn').keyup(function() {
-     $('#rom1_status').val($(this).val());
-     $('#rom1_status').html("Opptatt ( " + $(this).val() + " )");
-    });
+  $('#rom1_navn').keyup(function() {
+   $('#rom1_status').val($(this).val());
+   $('#rom1_status').html("Opptatt ( " + $(this).val() + " )");
+ });
 });
 
 $(document).ready(function(){
@@ -54,17 +54,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    $('#rom2_nytid').keyup(function() {
-     $('#rom2_tid').val($(this).val());
-     $('#rom2_tid').html($(this).val());
-    });
+  $('#rom2_nytid').keyup(function() {
+   $('#rom2_tid').val($(this).val());
+   $('#rom2_tid').html($(this).val());
+ });
 });
 
 $(document).ready(function() {
-    $('#rom2_navn').keyup(function() {
-     $('#rom2_status').val($(this).val());
-     $('#rom2_status').html("Opptatt ( " + $(this).val() + " )");
-    });
+  $('#rom2_navn').keyup(function() {
+   $('#rom2_status').val($(this).val());
+   $('#rom2_status').html("Opptatt ( " + $(this).val() + " )");
+ });
 });
 
 $(document).ready(function(){
@@ -87,17 +87,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    $('#rom3_nytid').keyup(function() {
-     $('#rom3_tid').val($(this).val());
-     $('#rom3_tid').html($(this).val());
-    });
+  $('#rom3_nytid').keyup(function() {
+   $('#rom3_tid').val($(this).val());
+   $('#rom3_tid').html($(this).val());
+ });
 });
 
 $(document).ready(function() {
-    $('#rom3_navn').keyup(function() {
-     $('#rom3_status').val($(this).val());
-     $('#rom3_status').html("Opptatt ( " + $(this).val() + " )");
-    });
+  $('#rom3_navn').keyup(function() {
+   $('#rom3_status').val($(this).val());
+   $('#rom3_status').html("Opptatt ( " + $(this).val() + " )");
+ });
 });
 
 $(document).ready(function(){
@@ -120,17 +120,17 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    $('#rom4_nytid').keyup(function() {
-     $('#rom4_tid').val($(this).val());
-     $('#rom4_tid').html($(this).val());
-    });
+  $('#rom4_nytid').keyup(function() {
+   $('#rom4_tid').val($(this).val());
+   $('#rom4_tid').html($(this).val());
+ });
 });
 
 $(document).ready(function() {
-    $('#rom4_navn').keyup(function() {
-     $('#rom4_status').val($(this).val());
-     $('#rom4_status').html("Opptatt ( " + $(this).val() + " )");
-    });
+  $('#rom4_navn').keyup(function() {
+   $('#rom4_status').val($(this).val());
+   $('#rom4_status').html("Opptatt ( " + $(this).val() + " )");
+ });
 });
 
 $(document).ready(function(){
@@ -153,37 +153,36 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-    $('#rom5_nytid').keyup(function() {
-     $('#rom5_tid').val($(this).val());
-     $('#rom5_tid').html($(this).val());
-    });
+  $('#rom5_nytid').keyup(function() {
+   $('#rom5_tid').val($(this).val());
+   $('#rom5_tid').html($(this).val());
+ });
 });
 
 $(document).ready(function() {
-    $('#rom5_navn').keyup(function() {
-     $('#rom5_status').val($(this).val());
-     $('#rom5_status').html("Opptatt ( " + $(this).val() + " )");
-    });
+  $('#rom5_navn').keyup(function() {
+   $('#rom5_status').val($(this).val());
+   $('#rom5_status').html("Opptatt ( " + $(this).val() + " )");
+ });
 });
 function setStyle(id,style,value)
 {
-    id.style[style] = value;
+  id.style[style] = value;
 }
 function opacity(el,opacity)
 {
-        setStyle(el,"filter:","alpha(opacity="+opacity+")");
-        setStyle(el,"-moz-opacity",opacity/100);
-        setStyle(el,"-khtml-opacity",opacity/100);
-        setStyle(el,"opacity",opacity/100);
+  setStyle(el,"filter:","alpha(opacity="+opacity+")");
+  setStyle(el,"-moz-opacity",opacity/100);
+  setStyle(el,"-khtml-opacity",opacity/100);
+  setStyle(el,"opacity",opacity/100);
 }
-function calendar()
+function calendar(dato)
 {
-        var date = new Date();
-        var day = date.getDate();
-        var month = date.getMonth();
-        var year = date.getYear();
-        document.write(day);
-        document.write(dato);
+  var date = new Date();
+  var day = date.getDate();
+  var month = date.getMonth();
+  var year = date.getYear();
+  document.write(dato);
 
         /*if(year<=200)
         {
@@ -246,5 +245,5 @@ function calendar()
         document.write('</tbody></table>');
         opacity(document.getElementById('cal_body'),70);
         return true;
-       */ 
-}
+        */ 
+      }
