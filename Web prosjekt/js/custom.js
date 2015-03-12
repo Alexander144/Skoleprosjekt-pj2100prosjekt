@@ -1,3 +1,4 @@
+var dato;
 $(document).ready(function(){
   $("#rom_ledig1").click(function(){
     $("#bestill_rom1").show("1000");
@@ -16,12 +17,16 @@ $(document).ready(function(){
     $("#bestill_rom1").hide("1000");
   });
 });
-
+$(document).ready(function() {
+  $('#rom1_nydato').keyup(function() {
+    $('#rom1_dato').val($(this).val());
+    $('#rom1_dato').html($(this).val());
+ });
+});
 $(document).ready(function() {
   $('#rom1_nytid').keyup(function() {
    $('#rom1_tid').val($(this).val());
    $('#rom1_tid').html($(this).val());
-    var dato;
    dato = $(this).val();
    calendar(dato);
  });
@@ -52,7 +57,12 @@ $(document).ready(function(){
     $("#bestill_rom2").hide("1000");
   });
 });
-
+$(document).ready(function() {
+  $('#rom2_nydato').keyup(function() {
+    $('#rom2_dato').val($(this).val());
+    $('#rom2_dato').html($(this).val());
+ });
+});
 $(document).ready(function() {
   $('#rom2_nytid').keyup(function() {
    $('#rom2_tid').val($(this).val());
@@ -85,7 +95,12 @@ $(document).ready(function(){
     $("#bestill_rom3").hide("1000");
   });
 });
-
+$(document).ready(function() {
+  $('#rom3_nydato').keyup(function() {
+    $('#rom3_dato').val($(this).val());
+    $('#rom3_dato').html($(this).val());
+ });
+});
 $(document).ready(function() {
   $('#rom3_nytid').keyup(function() {
    $('#rom3_tid').val($(this).val());
@@ -118,7 +133,12 @@ $(document).ready(function(){
     $("#bestill_rom4").hide("1000");
   });
 });
-
+$(document).ready(function() {
+  $('#rom4_nydato').keyup(function() {
+    $('#rom4_dato').val($(this).val());
+    $('#rom4_dato').html($(this).val());
+ });
+});
 $(document).ready(function() {
   $('#rom4_nytid').keyup(function() {
    $('#rom4_tid').val($(this).val());
@@ -151,7 +171,12 @@ $(document).ready(function(){
     $("#bestill_rom5").hide("1000");
   });
 });
-
+$(document).ready(function() {
+  $('#rom5_nydato').keyup(function() {
+    $('#rom5_dato').val($(this).val());
+    $('#rom5_dato').html($(this).val());
+ });
+});
 $(document).ready(function() {
   $('#rom5_nytid').keyup(function() {
    $('#rom5_tid').val($(this).val());
@@ -182,7 +207,6 @@ function calendar(dato)
   var day = date.getDate();
   var month = date.getMonth();
   var year = date.getYear();
-  document.write(dato);
 
         /*if(year<=200)
         {
