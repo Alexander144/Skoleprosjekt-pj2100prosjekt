@@ -6,13 +6,14 @@ $skillelinje:#2c3e50;
 $jumbobg:#2c3e50;
 $hover:#27ae60;
 
-.rom_ledig{
+.rom{
 	background-color: $ledig;
 	border-radius: 10px 10px 0px 0px;
 	border-bottom: 3px solid $skillelinje;
 	min-height: 50px;
 }
-.rom_opptatt{
+//Den setter stiler på rom som har parent med klassen booked
+.booked .rom {
 	background-color: $opptatt;
 	border-radius: 10px 10px 0px 0px;
 	border-bottom: 3px solid $skillelinje;
@@ -95,4 +96,8 @@ body{
 .cal_days_bef_aft
 {
         color:#5a779e;
+}
+//Den setter stiler på bestill som har parent med klassen active
+.active .bestill {
+  display: block;
 }

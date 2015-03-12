@@ -1,195 +1,57 @@
-var dato;
-$(document).ready(function(){
-  $("#rom_ledig1").click(function(){
-    $("#bestill_rom1").show("1000");
-  });
+$(document).ready(function () {
+  //lager en variabel og setter til å være alle html objektene med klassen .rom
+  var rooms = $('.room');
+  //sjekker om det finnes rom og kjører igjennom funskjonen
+  if (rooms.length > 0) {
+    //Trykker på klassen rooms og rad så kjører funksjonen, dette er fordi du skal bare kunne trykke på den engang  når den ikke active
+    rooms.on('click', '.rad', function () {
+      //This er objekte du trykker på, closest er den nærmeste med klassen .room og har klassen booked så retunerer den false som vil si at undermenyen ikke kommer opp
+      if ($(this).closest('.room').hasClass('booked')) {
+        return false;
+      }
+      //Hvis du trykker på objekte og nærmeste objekte og legger til klassen active i klassen room
+      $(this).closest('.room').addClass('active');
+    });
+      //Når du trykker på cancel så fjerner du klassen active fra klassen .room
+    rooms.on('click', '.cancel', function () {
+      $(this).closest('.room').removeClass('active');
+    });
+      //Each går igjennom alle .booking-form.
+    $('.booking-form').each(function () {
+      var form = $(this);
+      //Når du trykker på submit så sender alle verdier for skjema verdiene til update.php
+      form.on('submit', function (e) {
+        //Dette hindrer nettleserer å gjøre uønsket handlinger
+        e.preventDefault();
+        //Lager variabler og setter inn ting i variablene  for valgte klasse
+        var roomNumber = form.find('.room-number').val(),
+            name = form.find('.user').val(),
+            date = form.find('.date').val(),
+            timeStart = form.find('.time-start').val(),
+            timeEnd = form.find('.time-end').val();
+            //Kobler seg opp til update.php
+        $.ajax({
+          url: 'bin/update.php',
+          //Sender data av alle variablene
+          data: {
+            roomNumber: roomNumber,
+            name: name,
+            date: date,
+            timeStart: timeStart,
+            timeEnd: timeEnd
+          },
+          //Bruker metoden post, hvis post klarer å sende data refresher den siden
+          method: 'POST',
+          success: function () {
+            location.reload();
+          }
+        });
+      });
+    });
+  }
+
 });
 
-$(document).ready(function(){
-  $("#rom1_btn1").click(function(){
-    $("#rom_ledig1").addClass("rom_opptatt");
-    $("#bestill_rom1").hide("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom1_btn2").click(function(){
-    $("#bestill_rom1").hide("1000");
-  });
-});
-$(document).ready(function() {
-  $('#rom1_nydato').keyup(function() {
-    $('#rom1_dato').val($(this).val());
-    $('#rom1_dato').html($(this).val());
- });
-});
-$(document).ready(function() {
-  $('#rom1_nytid').keyup(function() {
-   $('#rom1_tid').val($(this).val());
-   $('#rom1_tid').html($(this).val());
-   dato = $(this).val();
-   calendar(dato);
- });
-});
-
-$(document).ready(function() {
-  $('#rom1_navn').keyup(function() {
-   $('#rom1_status').val($(this).val());
-   $('#rom1_status').html("Opptatt ( " + $(this).val() + " )");
- });
-});
-
-$(document).ready(function(){
-  $("#rom_ledig2").click(function(){
-    $("#bestill_rom2").show("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom2_btn1").click(function(){
-    $("#rom_ledig2").addClass("rom_opptatt");
-    $("#bestill_rom2").hide("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom2_btn2").click(function(){
-    $("#bestill_rom2").hide("1000");
-  });
-});
-$(document).ready(function() {
-  $('#rom2_nydato').keyup(function() {
-    $('#rom2_dato').val($(this).val());
-    $('#rom2_dato').html($(this).val());
- });
-});
-$(document).ready(function() {
-  $('#rom2_nytid').keyup(function() {
-   $('#rom2_tid').val($(this).val());
-   $('#rom2_tid').html($(this).val());
- });
-});
-
-$(document).ready(function() {
-  $('#rom2_navn').keyup(function() {
-   $('#rom2_status').val($(this).val());
-   $('#rom2_status').html("Opptatt ( " + $(this).val() + " )");
- });
-});
-
-$(document).ready(function(){
-  $("#rom_ledig3").click(function(){
-    $("#bestill_rom3").show("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom3_btn1").click(function(){
-    $("#rom_ledig3").addClass("rom_opptatt");
-    $("#bestill_rom3").hide("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom3_btn2").click(function(){
-    $("#bestill_rom3").hide("1000");
-  });
-});
-$(document).ready(function() {
-  $('#rom3_nydato').keyup(function() {
-    $('#rom3_dato').val($(this).val());
-    $('#rom3_dato').html($(this).val());
- });
-});
-$(document).ready(function() {
-  $('#rom3_nytid').keyup(function() {
-   $('#rom3_tid').val($(this).val());
-   $('#rom3_tid').html($(this).val());
- });
-});
-
-$(document).ready(function() {
-  $('#rom3_navn').keyup(function() {
-   $('#rom3_status').val($(this).val());
-   $('#rom3_status').html("Opptatt ( " + $(this).val() + " )");
- });
-});
-
-$(document).ready(function(){
-  $("#rom_ledig4").click(function(){
-    $("#bestill_rom4").show("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom4_btn1").click(function(){
-    $("#rom_ledig4").addClass("rom_opptatt");
-    $("#bestill_rom4").hide("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom4_btn2").click(function(){
-    $("#bestill_rom4").hide("1000");
-  });
-});
-$(document).ready(function() {
-  $('#rom4_nydato').keyup(function() {
-    $('#rom4_dato').val($(this).val());
-    $('#rom4_dato').html($(this).val());
- });
-});
-$(document).ready(function() {
-  $('#rom4_nytid').keyup(function() {
-   $('#rom4_tid').val($(this).val());
-   $('#rom4_tid').html($(this).val());
- });
-});
-
-$(document).ready(function() {
-  $('#rom4_navn').keyup(function() {
-   $('#rom4_status').val($(this).val());
-   $('#rom4_status').html("Opptatt ( " + $(this).val() + " )");
- });
-});
-
-$(document).ready(function(){
-  $("#rom_ledig5").click(function(){
-    $("#bestill_rom5").show("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom5_btn1").click(function(){
-    $("#rom_ledig5").addClass("rom_opptatt");
-    $("#bestill_rom5").hide("1000");
-  });
-});
-
-$(document).ready(function(){
-  $("#rom5_btn2").click(function(){
-    $("#bestill_rom5").hide("1000");
-  });
-});
-$(document).ready(function() {
-  $('#rom5_nydato').keyup(function() {
-    $('#rom5_dato').val($(this).val());
-    $('#rom5_dato').html($(this).val());
- });
-});
-$(document).ready(function() {
-  $('#rom5_nytid').keyup(function() {
-   $('#rom5_tid').val($(this).val());
-   $('#rom5_tid').html($(this).val());
- });
-});
-
-$(document).ready(function() {
-  $('#rom5_navn').keyup(function() {
-   $('#rom5_status').val($(this).val());
-   $('#rom5_status').html("Opptatt ( " + $(this).val() + " )");
- });
-});
 function setStyle(id,style,value)
 {
   id.style[style] = value;
@@ -201,73 +63,4 @@ function opacity(el,opacity)
   setStyle(el,"-khtml-opacity",opacity/100);
   setStyle(el,"opacity",opacity/100);
 }
-function calendar(dato)
-{
-  var date = new Date();
-  var day = date.getDate();
-  var month = date.getMonth();
-  var year = date.getYear();
 
-        /*if(year<=200)
-        {
-                year += 1900;
-        }
-        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
-        days_in_month = new Array(31,28,31,30,31,30,31,31,30,31,30,31);
-        if(year%4 == 0 && year!=1900)
-        {
-                days_in_month[1]=29;
-        }
-        total = days_in_month[month];
-        var date_today = day+' '+months[month]+' '+year;
-        beg_j = date;
-        beg_j.setDate(1);
-        if(beg_j.getDate()==2)
-        {
-                beg_j=setDate(0);
-        }
-        beg_j = beg_j.getDay();
-        document.write('<table class="cal_calendar" onload="opacity(document.getElementById(\'cal_body\'),20);"><tbody id="cal_body"><tr><th colspan="7">'+date_today+'</th></tr>');
-        document.write('<tr class="cal_d_weeks"><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>');
-        week = 0;
-        for(i=1;i<=beg_j;i++)
-        {
-                document.write('<td class="cal_days_bef_aft">'+(days_in_month[month-1]-beg_j+i)+'</td>');
-                week++;
-        }
-        for(i=1;i<=total;i++)
-        {
-                if(week==0)
-                {
-                        document.write('<tr>');
-                }
-                if(day==i)
-                {
-                        document.write('<td class="cal_today">'+i+'</td>');
-                }
-                else
-                {
-                        document.write('<td>'+i+'</td>');
-                }
-                week++;
-                if(week==7)
-                {
-                        document.write('</tr>');
-                        week=0;
-                }
-        }
-        for(i=1;week!=0;i++)
-        {
-                document.write('<td class="cal_days_bef_aft">'+i+'</td>');
-                week++;
-                if(week==7)
-                {
-                        document.write('</tr>');
-                        week=0;
-                }
-        }
-        document.write('</tbody></table>');
-        opacity(document.getElementById('cal_body'),70);
-        return true;
-        */ 
-      }
