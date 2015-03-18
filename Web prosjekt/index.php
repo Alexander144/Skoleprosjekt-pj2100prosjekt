@@ -42,34 +42,42 @@ require_once 'bin/booking.php';
           </nav>
         </div>
       </div>
-
-
-    <?php 
-    /*Variabelen rooms er lik, booking gerRooms methoden. Booking er en klasse. Ligger i booking.php*/
+      <?php 
+    /*lager variabel day, som blir hvis dag er satt så henter den dagen. Hvis det ikke er satt noe dag så henter den idag. I url*/
+    $day = (isset($_GET['day']) ? $_GET['day'] : 'I dag');
     $rooms = booking::getRooms();
     ?>
-
-    <div class="container">
+<div class="container">
+  <div class="container">
+    <?php //Velger hvilken dag og setter dagen ?>
+    <form method="get" class="dayselector">
+      <select class="Dato" class="form-control" name="day">
+      <option id="dag" <?= ($day === 'I dag') ? 'selected' : '' ?>>I dag</option>
+      <option id="morgen" <?= ($day === 'I morgen') ? 'selected' : '' ?>>I morgen</option>
+      </select>
+      <?php//gjemmer knappen fordi den ikke er i bruk ?>
+      <input type="submit" style="display: none;">
+    </form>
+     </div>
     <?php 
     /*For hvert room med indexen(rekkefølge på rommene),starter på index 0 som er første valgt rom. => betyr at index i blir lik room. Looper igjennom 
     og lager visningen for antall rom som finnes*/
     foreach ($rooms as $i => $room) { ?>
-      <?php
-      //variabelen isBooked er lik klassen booking funksjonen isBooked, sender med roomnummeret. For eksp går i array rom og henter roomNumber.
-      $isBooked = booking::isBooked($room['roomNumber']);
-      ?>
-      <div class="room <?php //Skriver ut klassen booked hvis isBooked er true
-      echo ($isBooked ? 'booked' : '') ?>">
+      <div class="room">
         <div class="row rad rom text-center" id="rom<?php /*Skriver ut indexen plusser med 1 fordi indexen starter på 0*/ echo $i + 1 ?>">
         <div class="col-md-12">
           <div class="container">
             <div class="row">
-              <div class="col-md-2">klasserom nr: <?php /*Skriver ut fra arrayen og roomNumber, som er fra databasen*/ echo $room['roomNumber']; ?></div>
-              <div class="col-md-2" id="rom1_status"></div>
-              <div class="col-md-2" id="rom1_dato">dato</div>
-              <div class="col-md-2" id="rom1_status">Ledig</div>
-              <div class="col-md-2" id="rom1_tid1">- - : - -</div>
-              <div class="col-md-2" id="rom1_tid2">- - : - -</div>
+              <div class="col-md-2 pilned" <p><span class="glyphicon glyphicon-chevron-down"></span></p></div>
+              <div class="col-md-2"><strong>Klasserom nr: </strong><?php /*Skriver ut fra arrayen og roomNumber, som er fra databasen*/ echo $room['roomNumber']; ?></div>
+              <div class="col-md-2" id="prosjektor"><strong>Prosjektor</strong>
+                <?php /*Sjekke om rommet har prosjektor og setter inn et bilde hvis det har eller ikke*/ if($room['hasProjector']){ ?>
+                <img class="projector" src="img/Projector.png">
+                <?php } else{?>
+                <img class="projector" src="img/noProjector.png">
+                <?php } ?>
+              </div>
+              <div class="col-md-2" id="rom1_status"><strong>Ledig/Opptatt </strong><div class="boxPlass"><div class="box" id="green"></div><div class="box" id="red"></div></div></div>
             </div>
           </div>
         </div>
@@ -77,35 +85,20 @@ require_once 'bin/booking.php';
       <form class="booking-form">
         <input class="room-number" type="hidden" value="<?php /*Skriver den ut roomNumber og sendes videre til update.php via et javascript*/ echo $room['roomNumber']; ?>">
       <div class="row bestill text-center">
-         <div class="col-md-3">
-          <div class="input-group">
-            <span class="input-group-addon" id="sizing-addon2">Navn:</span>
-            <input required type="text" class="user form-control" id="rom1_navn" placeholder="F.eks: Alexander Larsen" aria-describedby="sizing-addon2" value="alex">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="input-group">
-            <span class="input-group-addon" id="sizing-addon2">Dato:</span>
-            <input required type="date" class="date form-control" id="rom1_nydato" placeholder="Skrives dato i dag eller i morgen:" aria-describedby="sizing-addon2">
-          </div>
-        </div>
-        <div class="col-md-3"> 
-          <div class="input-group">
-            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
-              <input type="time" class="time-start form-control" id="rom1_nytid1" placeholder="skrives: 11:00">
-            </span>
-          </div>
-        </div>
-        <div class="col-md-3"> 
-          <div class="input-group">
-            <span class="input-group-addon" id="sizing-addon2">Tid:</span>
-              <input type="time" class="time-end form-control" id="rom1_nytid2" placeholder="skrives: 12:00">
-              <span class="input-group-btn">
-                <input type="submit" class="btn btn-default book" value="Book!">
-              <button class="btn btn-default cancel" id="rom1_btn2" type="button">Avbryt</button>
-            </span>
-          </div>
-        </div>
+        <?php /*Lager knapper for vær gang det er en periode tid, altså 4 i vært felt i dette sammenheng*/ foreach ($room['periods'] as $period) { ?>
+        <?php /*Den henter verdien fra period, booked eller ikke*/ $isBooked=reset($period);  ?>
+           <div class="col-md-6 period">
+            <div class="col-md-6">
+            <strong><?= /*Henter indexen, skriver ut tiden*/ key($period) ?></strong>
+            <input type="hidden">
+            </div>
+            <div class="col-md-6">
+             <span class="input-group-btn">
+                <input <?php /*Skriver den ut hvis den er booket attributene data*/ echo ($isBooked ? 'disabled':'')?> type="submit" data-roomNumber="<?=$room['roomNumber'] ?>" data-date="<?=$day ?>" data-time="<?=key($period) ?>" class="btn btn-default book" value="<?php echo ($isBooked ? 'Opptatt':'Ledig')?>">
+              </span>
+            </div>
+           </div>
+        <?php } ?>
       </div>
       </form>
       </div>

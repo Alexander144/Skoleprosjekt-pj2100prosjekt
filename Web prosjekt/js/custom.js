@@ -3,53 +3,63 @@ $(document).ready(function () {
   var rooms = $('.room');
   //sjekker om det finnes rom og kjører igjennom funskjonen
   if (rooms.length > 0) {
+    //Den sjekker om det finnes 4 knapper som er dissable(booked). Hvis så gir den rooms klassen full og blir rød
+    $.each(rooms, function () {
+      if ($(this).find('.book:disabled').length == 4) {
+        $(this).addClass('full');
+      }
+    });
+
     //Trykker på klassen rooms og rad så kjører funksjonen, dette er fordi du skal bare kunne trykke på den engang  når den ikke active
-    rooms.on('click', '.rad', function () {
+      rooms.on('click', '.rad', function () {
       //This er objekte du trykker på, closest er den nærmeste med klassen .room og har klassen booked så retunerer den false som vil si at undermenyen ikke kommer opp
       if ($(this).closest('.room').hasClass('booked')) {
-        return false;
+          return false;
       }
+      //sjekker om klassen er active, hvis den er så kan du trykke på .room klassen og fjernet klassen
+      if($(this).closest('.room').hasClass('active')){ 
+        $(this).closest('.room').removeClass('active');
+      }
+        else{
       //Hvis du trykker på objekte og nærmeste objekte og legger til klassen active i klassen room
       $(this).closest('.room').addClass('active');
-    });
-      //Når du trykker på cancel så fjerner du klassen active fra klassen .room
-    rooms.on('click', '.cancel', function () {
-      $(this).closest('.room').removeClass('active');
+    }
     });
       //Each går igjennom alle .booking-form.
-    $('.booking-form').each(function () {
-      var form = $(this);
+    $('.booking-form .period .book').each(function () {
+      var button = $(this);
       //Når du trykker på submit så sender alle verdier for skjema verdiene til update.php
-      form.on('submit', function (e) {
+      button.on('click', function (e) {
         //Dette hindrer nettleserer å gjøre uønsket handlinger
         e.preventDefault();
+
         //Lager variabler og setter inn ting i variablene  for valgte klasse
-        var roomNumber = form.find('.room-number').val(),
-            name = form.find('.user').val(),
-            date = form.find('.date').val(),
-            timeStart = form.find('.time-start').val(),
-            timeEnd = form.find('.time-end').val();
+        var roomNumber = button.attr("data-roomNumber"),
+            time = button.attr("data-time"),
+            date = button.attr('data-date');
+            console.log(roomNumber,time,date);
             //Kobler seg opp til update.php
         $.ajax({
           url: 'bin/update.php',
           //Sender data av alle variablene
           data: {
             roomNumber: roomNumber,
-            name: name,
             date: date,
-            timeStart: timeStart,
-            timeEnd: timeEnd
-          },
+            time: time,
+          },  
           //Bruker metoden post, hvis post klarer å sende data refresher den siden
           method: 'POST',
-          success: function () {
+          success: function (data) {
             location.reload();
           }
         });
       });
     });
   }
-
+  //sjekker om dayselectoren forandrer seg og gjør funksjonen submit
+$('.dayselector').on('change', function () {
+  $(this).submit();
+});
 });
 
 function setStyle(id,style,value)
