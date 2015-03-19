@@ -22,7 +22,7 @@ class booking {
 			'10:15 - 12:15',
 			'12:15 - 14:15',
 			'14:15 - 16:15'
-		);
+			);
 		/*lager variabel day, som blir hvis dag er satt så henter den dagen. Hvis det ikke er satt noe dag så henter den idag. I url*/
 		$day = (isset($_GET['day']) ? $_GET['day'] : 'I dag');
 
@@ -46,7 +46,7 @@ class booking {
 	}
 
 	//her putter du inn roomID og date og putter inn valgte variabler inn i databasen som er da roomID og date
-	public static function updateRoom($roomID, $day, $time) {
+	public static function updateRoom($name,$roomID, $day, $time) {
 		$db = Mysql::get();
 		//Hvis dag er imorgen så plusser den dag med en og får neste dag.
 		if ($day === 'I morgen') {
@@ -58,13 +58,13 @@ class booking {
 			$date = date('Y-m-d');
 		}
 		//putter inn variablene i databasen
-		$query = mysql_query("INSERT INTO book.group_room(groupID,roomNumber, date, time) VALUES(1,'$roomID','$date','$time')");
+		$query = mysql_query("INSERT INTO book.group_room(StudentUser,roomNumber, date, time) VALUES('$name','$roomID','$date','$time')");
 	}
 	//her sjekkes om rommet er booket
-    public static function isBooked($roomID, $day = 'I morgen', $time) {
+	public static function isBooked($roomID, $day = 'I morgen', $time) {
        //alle med  Mysql::get(); er koblinger
-        $db = Mysql::get();
-        $roomID = (int) $roomID;
+		$db = Mysql::get();
+		$roomID = (int) $roomID;
 
 		if ($day === 'I morgen') {
 			$date = strtotime('+1 day', mktime(0, 0, 0));
@@ -74,15 +74,15 @@ class booking {
 		}
 
         //DU lager en variabel og henter fra databasen fra room_booked_date der roomID(fra databasen)  = '$roomID' fra parameteret
-        $result = mysql_query("SELECT * FROM book.group_room WHERE
-        	roomNumber='$roomID' AND book.group_room.date='$date' AND book.group_room.time='$time'
-        ");
+		$result = mysql_query("SELECT * FROM book.group_room WHERE
+			roomNumber='$roomID' AND book.group_room.date='$date' AND book.group_room.time='$time'
+			");
 
 		//Her sjekker du om det er room i booked room
-         if (mysql_num_rows($result) > 0) {
-        	return true;
-        } else {
-        	return false;
-        }
-    }
+		if (mysql_num_rows($result) > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

@@ -1,124 +1,155 @@
 $opptatt: #F26F62;
 $ledig: #7DC49D;
 $bg: #ecf0f1;
-$popupgb:#1abc9c;
+$popupgb:#72B891;
 $skillelinje:#2c3e50;
 $jumbobg:#2c3e50;
 $hover:#27ae60;
 .rom{
-	background-color: $ledig;
-	border-radius: 10px 10px 10px 10px;
-	min-height: 50px;
-  margin-top: 10px;
-  padding-bottom: 10px;
-}
-.full .rom {
-  background: $opptatt;
-
-  #green {
-    background: transparent;
-  }
-
-  #red {
-    background: red;
-  }
+background-color: $ledig;
+border-radius: 10px 10px 10px 10px;
+min-height: 50px;
+margin-top: 10px;
+padding-bottom: 10px;
 }
 .bestill{
-	border-radius: 0px 0px 10px 10px;
-	background-color: $popupgb;
-	display: none;
-  width: 1100px;
-  padding: 20px 0;
-  margin-left: 20px;
-  max-width: 100%;
+border-radius: 0px 0px 10px 10px;
+background-color: $popupgb;
+display: none;
+width: 1100px;
+padding: 20px 0;
+margin-left: 20px;
+max-width: 100%;
 }
 body{
-	background-color: $bg;
+background-color: $bg;
 }
 .jumbotron{
-	background-color: $jumbobg;
-	margin-bottom: 0px;
-	h1{
-		color:$bg;
-	}
-	p{
-		color:$bg;
-	}
+height: 250px;
+background-color: $jumbobg;
+margin-bottom: 0px;
+h1{
+color:$bg;
+}
+p{
+color:$bg;
+}
 }
 .thumbnail{
-  background-color: $ledig;
-  height: 200px;
-  margin-top: 50px;
-  ul{
-    list-style: none;
-    margin-top: 10px;
-  }
+background-color: $ledig;
+height: 200px;
+margin-top: 50px;
+ul{
+list-style: none;
+margin-top: 10px;
+}
 }
 .thumbnail:hover{
-  background-color: $hover;
+background-color: $hover;
 }
 .kart{
-  border: 2px solid $skillelinje;
-  border-radius: 10px;
-  margin-bottom: 30px;
+border: 2px solid $skillelinje;
+border-radius: 10px;
+margin-bottom: 30px;
 }
 
 .ledigfarge{
-  color: $ledig;
+color: $ledig;
 }
 
 .opptattfarge{
-  color: $opptatt;
+color: $opptatt;
 }
 //Den setter stiler på bestill som har parent med klassen active
 .active .bestill {
-  display: block;
+display: block;
+#pilpekeropp{
+-webkit-transform: rotate(50deg);
+display: none;
+}
 }
 .box{
-  width: 20px;
-  height: 20px;
-  border: solid black 2px;
-  border-radius: 10px 10px 10px 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+width: 20px;
+height: 20px;
+border: solid black 2px;
+border-radius: 10px 10px 10px 10px;
+margin-left: 10px;
+margin-right: 10px;
 }
 .boxPlass{
-  display:  block;
-  margin: 0 auto;
-  margin-top: 10px;
-  text-align: center;
+display:  block;
+margin: 0 auto;
+margin-top: 10px;
+text-align: center;
 
-  .box {
-    display: inline-block;
-  }
+.box {
+display: inline-block;
+}
 }
 #green{
-  background-color: green;
+background-color: green;
 }
 .Dato{
-  margin: 10px;
+margin-top: 10px;
+margin-left: -30px;
 }
 .pilned{
-  margin-top: 10px;
+margin-top: 10px;
 }
 .book{
-  //border-radius: 10px 10px 10px 10px;
-  height: 30px;
-  width: 80px;
-  background-color:green;
-  margin-top: 5px;
-  margin-left: -100px;
+border-radius: 1px 1px 1px 1px;
+height: 30px;
+width: 80px;
+background-color:$ledig;
+border:0;
+margin-top: 5px;
+margin-left: -100px;
 }
 .book:disabled{
-  background-color: $opptatt;
+background-color: $opptatt;
 }
 .valgttid{
-  margin-top: 10px;
-  margin-left: -40px;
+margin-top: 10px;
+margin-left: -40px;
 }
 .projector{
-  height: 50px;
-  display: block;
-  width: 50px;
-  margin: 0 auto;
+height: 50px;
+display: block;
+width: 50px;
+margin: 0 auto;
+}
+.full .rom{
+background: $opptatt;  
+  #green {  
+  background: transparent;
+  }
+
+  #red {
+  background: red;
+  }
+}
+.full .bestill{
+background: #DC6559;  
+}
+.pil{
+height: 20px;
+margin-left: 30px;
+}
+.klasserom{
+margin-top: 15px;
+}
+.antallpersoner{
+  margin-top: 15px;
+}
+.logo{
+  height: 150px;
+  margin-top: -30px;
+}
+.menyknapp{
+  margin-top: 0px;
+  margin-left: -20px;
+}
+.user{
+  margin-top: 10px;
+  margin-left: -30px;
 }
